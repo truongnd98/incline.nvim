@@ -10,6 +10,10 @@ local HIDE_PERSIST = 1
 local HIDE_TEMP = 2
 
 function M.parse_render_result(node, offset)
+  if type(node) == 'function' then
+    node = node()
+  end
+
   if type(node) == 'string' or type(node) == 'number' then
     return { text = tostring(node), hls = {} }
   end
